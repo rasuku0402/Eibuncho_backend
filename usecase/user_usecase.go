@@ -122,7 +122,7 @@ func (uu *userUsecase) FindVerificationCode(req model.VerificationRequest) error
 	user := model.User{
 		UserName: resUser.UserName,
 		Email:    resUser.Email,
-		Password: resUser.Password, // 注意：これはハッシュ化されたパスワードである必要があります
+		Password: resUser.Password,
 	}
 
 	// ユーザーをデータベースに保存

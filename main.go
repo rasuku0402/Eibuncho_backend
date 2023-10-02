@@ -31,7 +31,7 @@ func main() {
 	c := cron.New(cron.WithSeconds())
 	_, err := c.AddFunc("0 */3 * * * *", func() {
 		fmt.Println("Running job every 3 minutes")
-		DeleteOldRecords(db) // dbはあなたのデータベースのインスタンス
+		DeleteOldRecords(db)
 	})
 	if err != nil {
 		fmt.Printf("Error scheduling job: %s\n", err)

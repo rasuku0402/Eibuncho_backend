@@ -51,8 +51,7 @@ func (ur *userRepository) FindVerificationCode(code string) (model.Verificationr
 		return model.Verificationresponse{}, err
 	}
 
-	// もし有効期限を確認したいなら、ここで確認し、
-	// 期限切れならエラーを返すこともできます。
+	// 有効期限を確認し、期限切れならエラーを返す
 	if time.Now().After(verificationCode.ExpiresAt) {
 		return model.Verificationresponse{}, errors.New("code has expired")
 	}

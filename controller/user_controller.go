@@ -17,7 +17,7 @@ import (
 )
 
 var sess = session.Must(session.NewSession(&aws.Config{
-	Region: aws.String("ap-northeast-1"), // 適切なリージョンに変更してください
+	Region: aws.String("ap-northeast-1"), // 適切なリージョンに変更
 }))
 var svc = ses.New(sess)
 
@@ -37,7 +37,7 @@ func sendEmail(recipient string, subject string, bodyText string) error {
 				Data: aws.String(subject),
 			},
 		},
-		Source: aws.String("<Email address>"), // ensure this is a verified email in SES
+		Source: aws.String("<Email address>"), // AWS SESから送信されるEmailアドレスを入力
 	}
 	_, err := svc.SendEmail(input)
 	return err
@@ -179,7 +179,7 @@ func (uc *userController) Validate(c echo.Context) error {
 	if err := c.Bind(&req); err != nil {
 		return c.JSON(http.StatusBadRequest, "Who?")
 	}
-	// FindVerificationCodeは適切に実装する必要があります
+
 	err := uc.uu.FindVerificationCode(req)
 	if err != nil {
 		return c.JSON(http.StatusBadRequest, "Invalid or expired code")

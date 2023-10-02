@@ -37,7 +37,7 @@ func sendEmail(recipient string, subject string, bodyText string) error {
 				Data: aws.String(subject),
 			},
 		},
-		Source: aws.String("taitoo0402@gmail.com"), // ensure this is a verified email in SES
+		Source: aws.String("<Email address>"), // ensure this is a verified email in SES
 	}
 	_, err := svc.SendEmail(input)
 	return err
